@@ -2,4 +2,4 @@
 
 DATE=$(date)
 
-echo "Timestamp executed"
+echo "Timestamp executed: $DATE"
