@@ -3,7 +3,7 @@
 USERID=$(id -u)
 
 if [ $USERID -ne 0 ]; then
-    echo "ERROR:: please runt his script with root privilage"
+    echo "ERROR:: please runt this script with root privilage"
 fi
 
 dnf install mysql -y
