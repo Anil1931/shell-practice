@@ -12,7 +12,7 @@ VALIDATE(){
             exit 1
         else
             echo " Installing $2 is success"
-            exit 0
+            
 
         fi
 
