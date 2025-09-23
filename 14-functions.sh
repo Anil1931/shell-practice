@@ -12,7 +12,7 @@ VALIDATE(){
             exit 1
         else
             echo " Installing $2 is success"
-            
+
 
         fi
 
@@ -20,7 +20,7 @@ VALIDATE(){
 dnf install mysql -y
 VALIDATE $? "MYSQL"
 
-dnf install ngnix -y
+dnf install nginx -y
 VALIDATE $? "nginx"  
 
 dnf install mongodb-mongosh -y
