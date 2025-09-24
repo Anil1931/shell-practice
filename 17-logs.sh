@@ -15,19 +15,19 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 
 mkdir -p $LOGS_FOLDER
-echo "script started executed at: $(date)"
+echo "script started executed at: $(date)" 
 
 if [ $USERID -ne 0 ]; then
-    echo "ERROR:: please runt this script with root privilage"
+    echo "ERROR:: please runt this script with root privilage" | tee -a $LOG_FILE
     exit 1 # failure is other than 0
 fi
 
 VALIDATE(){
         if [ $1 -ne 0 ]; then 
-            echo -e "instaling $2... $R failure $N"
+            echo -e "instaling $2... $R failure $N" | tee -a $LOG_FILE
             exit 1
         else
-            echo -e " Installing $2....$G is success $N"
+            echo -e " Installing $2....$G is success $N" | tee -a $LOG_FILE
 
 
         fi
@@ -39,19 +39,19 @@ if [ $? -ne 0 ];then
     dnf install mysql -y &>>$LOG_FILE
     VALIDATE $? "MYSQL"
 else
-    echo -e "Mysql already exist...$G Skipping $N"
+    echo -e "Mysql already exist...$G Skipping $N" | tee -a $LOG_FILE
 fi
 dnf list installed nginx &>>$LOG_FILE
 if [ $? -ne 0 ];then
     dnf install nginx -y &>>$LOG_FILE
     VALIDATE $? "nginx"  
 else
-    echo -e "Nginx already exist...$G skipping $N"
+    echo -e "Nginx already exist...$G skipping $N" | tee -a $LOG_FILE
 fi
 dnf list installed python3 &>>$LOG_FILE
 if [ $? -ne 0 ];then 
     dnf install python3 -y &>>$LOG_FILE
     VALIDATE $? "python3" 
 else
-    echo -e "Python3 already exist ...$G skipping $N"
+    echo -e "Python3 already exist ...$G skipping $N" | tee -a $LOG_FILE
 fi
