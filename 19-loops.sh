@@ -33,6 +33,8 @@ VALIDATE(){
         fi
 }
 
+# "$@"" this is the sepecial variable to get all the arguments which are passed on Scripts 
+
 for package in $@
 do 
     echo "Package is: $package"
