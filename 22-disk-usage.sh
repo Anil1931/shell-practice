@@ -2,6 +2,8 @@
 
 DISK_USAGE=$(df -hT | grep -v Filesystem)
 DISK_THRESHOLD=2 # generally it will be 75%
+IP_ADDRESS=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+MESSAGE=""
 
 while IFS= read -r line
 
@@ -11,8 +13,10 @@ do
     PARTITION=$(echo $line | awk '{print $7}')
     if [ $USAGE -ge $DISK_THRESHOLD ]; then
 
-        echo "High usage on $PARTITION: $USAGE"
+        MESSAGE="High disk usage on $PARTITION: $USAGE %"
 
     fi
 
 done  <<< $DISK_USAGE
+
+echo "Message body: $MESSAGE"
