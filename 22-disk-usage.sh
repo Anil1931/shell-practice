@@ -19,4 +19,4 @@ do
 
 done  <<< $DISK_USAGE
 
-echo "Message body: $MESSAGE"
+echo -e "Message body: $MESSAGE"
